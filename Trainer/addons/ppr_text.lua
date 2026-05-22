@@ -1,0 +1,1 @@
+-- Disabled: PPR watermark removed.

@@ -1,0 +1,136 @@
+BLACKWAVE Reborn Trainer! v1.0.0 for PAYDAY 2
+Ride the wave. Own the heist.
+By SULONG
+
+BLACKWAVE is inspired by and based on Pirate Perfection Reborn Trainer by Baddog-11 and the Pirate Perfection Developer Crew.
+A large portion of its foundation, architecture, and scripts originate from that project.
+We are grateful for their work. BLACKWAVE exists to maintain, modernize, and expand on that legacy.
+
+
+-- Controls :
+
+    -- These Keybinds Work Both Main-Menu & In-Game
+
+        F1 : Help Menu
+        F2 : Configuration Menu
+        F3 : Main Pre-Game Menu / Character Menu
+        F4 : Job Menu / Stealth Menu
+        F5 : Spoof Name Menu / Troll Menu
+
+        Page UP   : Tools Menu
+        Page Down : Music Menu
+        Home      : Normalizer Menu
+
+        Delete : User Self-made Script (Depends on your Script)
+
+    -- These Keybinds Work Only In-Game
+
+        F6  : Interaction Menu
+        F7  : Mission Menu
+        F8  : Inventory Menu
+        F9  : Equipment Menu
+        F10 : Weapons Menu
+        F11 : Mod Menu
+        F12 : Spawn Menu
+
+        Insert : Carry Stacker Control (Enable; Push/pop bag)
+        End    : Instant Win
+
+        X : X-Ray Vision
+        Z : Replenish
+
+        5 : Equipment spawn menu
+        4 : Quick Spawn selected equipment
+
+        Middle Mouse Button  : Teleport
+        Extra Mouse Button 1 : Slow Motion
+
+-- Mods control:
+    Superman mod: Page Up - Fly up.
+                  Page Down - Fly down.
+
+    Driver mod:   Arrow left/right/up/down - Move left/right/up/down.
+
+    Lego mod:     Page Up   - Place lego.
+                  Page Down - Remove lego.
+                  H         - Delete props.
+                  6         - Spawn props.
+                  7         - Quick-switch to previous prop.
+                  8         - Quick-switch to next prop.
+
+
+-- Installation:
+Place the BLACKWAVE folder inside your PAYDAY 2 mods directory:
+    .../Steam/steamapps/common/PAYDAY 2/mods/BLACKWAVE/
+Requires SuperBLT. Customize Trainer/config.lua to your taste.
+
+
+-- Changelog :
+
+Version 1.0.0 - BLACKWAVE (2026):
+    - Forked from Pirate Perfection Reborn Trainer V.I.P. Edition v2.0.0 by Baddog-11.
+    - Rebranded as BLACKWAVE.
+    - Integrated BeardLib compatibility fix: MenuHelperPlus preloaded before init()
+      triggers MenuManagerInitialize. Self-contained, no BeardLib edits required.
+      Fixes crash on main menu when BeardLib updates.
+    - Updated mod path references (mods/BLACKWAVE/).
+    - Updated identity strings, icon, and credits.
+    - Progressive maintenance and modernization ongoing.
+
+
+-- F.A.Q. :
+
+Q? My DLC items locked again / DLC unlocker not working?
+A! Set DLCUnlocker = true in config.lua. Disabled by default to avoid cheater tags.
+
+Q? Achievements not working?
+A! Stats sync disabled by default. Set NoStatsSynced = false in config.lua.
+   Also set your Steam profile visibility to non-public.
+
+Q? Game crashes on main menu after installing?
+A! BLACKWAVE includes a BeardLib compatibility fix. If crash persists,
+   check mods/logs/YYYY_MM_DD_log.txt and report the error.
+
+Q? Nothing shows up in game?
+A! Verify folder is named exactly BLACKWAVE inside the mods directory.
+   Confirm SuperBLT is installed and working.
+
+Q? How do I enable an option?
+A! Check config.lua and explore the in-game menus.
+
+Q? Can I be banned for using this?
+A! PAYDAY 2 has no server-side ban system. You can receive a visual CHEATER
+   tag from other players if you use certain client-side exploits.
+   See detection notes below.
+
+-- Detection notes:
+    From client side:
+     - Spawning equipment different from last spawned.
+     - Throwing more grenades than allowed.
+     - Spawning more equipment than allowed.
+     - Securing/spawning bag different from what you carry.
+     - Wearing DLC item you don't own.
+
+    From server side:
+     - Same as above, plus hosting heist from unowned DLC.
+
+
+-- Credits :
+
+By SULONG
+    Visual Design & QA: Daktar
+
+Based on Pirate Perfection Reborn Trainer by:
+    Main Developers: Baddog-11
+    Original Idea:   PirateCaptain, TranscendPerfection
+    Past Developers: ThisJazzman, baldwin, v00d00, Simplity, Davy Jones
+
+    PD2 Hook: Harfatus
+    DLL Hook: ThisJazzman (https://bitbucket.org/SoulHipHop/underground-light-lua-hook)
+    BLT Hook: James Wilko (https://github.com/JamesWilko/Payday-2-BLT)
+    Separate scripts: OJSimpson (dlc unlocker)
+
+
+-- DISCLAIMER :
+Use at your own risk. We take no responsibility for ban, corrupted files,
+or save data issues. Be respectful to other players online.

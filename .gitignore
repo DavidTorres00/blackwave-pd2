@@ -1,0 +1,19 @@
+# Reference images (testing only)
+referencia*.jpeg
+referencia*.jpg
+REFERENCIA*.jpg
+REFERENCIA*.jpeg
+
+# Old images replaced by PNG
+BLACKWAVE.jpg
+BLACKWAVE.jpeg
+
+# Windows shortcuts
+*.lnk
+
+# Lua error logs
+errlog.log
+*.log
+
+# Auto-generated config patches
+*.auto
