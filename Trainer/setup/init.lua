@@ -8,6 +8,15 @@ if BeardLib and not MenuHelperPlus then
     pcall(dofile, BeardLib.ModPath .. "Classes/Utils/Menu.lua")
 end
 
+-- VanillaHUD Plus compat: loads OutlinedText.lua on lib/entry, but our early
+-- init() fires HUD setup before their hook runs. Preload it to prevent nil crash.
+if not OutlinedText then
+    local _vhud_ot = "mods/VanillaHUD Plus/lua/Utils/OutlinedText.lua"
+    if io and io.file_is_readable and io.file_is_readable(_vhud_ot) then
+        pcall(dofile, _vhud_ot)
+    end
+end
+
 --Early init, so managers will be initiated succefully.
 init()
 
