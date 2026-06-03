@@ -6,7 +6,7 @@ if inGame() and isPlaying() and not inChat() and not InOverlay() then
 		_lastBullet = nil 
 	end
 	if _lastBullet then
-		managers.player:warp_to(_lastBullet, managers.player:player_unit():position(), 1, rot0 )
+		managers.player:warp_to(_lastBullet, rot0, 1)
 	end
 	if not _bulletCollision then
 		_bulletCollision = InstantBulletBase.on_collision 

@@ -3,7 +3,7 @@
 if inGame() and isPlaying() and not inChat() and not InOverlay() then
 
 	local player_unit = managers.player:player_unit()
-	local rot0 = Rotation(0,0,0)
+	local rot0 = managers.player:player_unit():camera():rotation()
 	local get_ray = get_ray
 	local ppr_config = ppr_config
 	local M_player = managers.player
@@ -11,8 +11,15 @@ if inGame() and isPlaying() and not inChat() and not InOverlay() then
 	local ray = get_ray(ppr_config.TeleportPenetrate)
 	
 	if ray then
-		managers.player:warp_to(ray.hit_position, rot0, 1)
-		--managers.player:warp_to(ray.hit_position, player_unit:position(), 1, rot0)
+		local dest = ray.hit_position
+		if ppr_config.TeleportPenetrate then
+			local slot_mask = managers.slot:get_mask("bullet_impact_targets")
+			local floor_check = World:raycast("ray", dest + Vector3(0, 0, 200), dest + Vector3(0, 0, -500), "slot_mask", slot_mask)
+			if not floor_check then
+				dest = dest - rot0:y() * 100
+			end
+		end
+		managers.player:warp_to(dest, rot0, 1)
 		show_mid_text("Teleport","Penetrative",0.25)
 		beep()
 	end
