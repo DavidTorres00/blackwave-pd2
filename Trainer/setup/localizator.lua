@@ -97,7 +97,9 @@ load_language = function( self )
 	local language = self.lan
 	local result = _load_language( language )
 	if ( result ) then
-		self.translate = result
+		local t = self.translate
+		for k in pairs(t) do t[k] = nil end
+		for k, v in pairs(result) do t[k] = v end
 	end
 	mt_table( self )
 	if not next(self.translate) then

@@ -220,24 +220,25 @@ reload_ppr_config = function()
 	ppr_config()
 end
 
-local main_menu_data = {
-	--TO DO: Improve menu class or create link between these 2, so user can press return and return to this menu.
-	{ text = tr['wp_title'], callback = ppr_require("Trainer/menu/waypoints_settings"), menu = true },
-	{},
-	{ text = tr['loc_menu'], callback = ppr_require("Trainer/menu/pre-game/loc_menu"), menu = true },
-	{},
-	{ text = tr['config_create'], callback = create_config_menu, menu = true },
-	{ text = tr['config_rename'], callback = rename_config_menu, menu = true },
-	{ text = tr['config_delete'], callback = delete_config_menu, menu = true },
-	{ text = tr['config_load'], callback = load_config_menu, menu = true },
-	{},
-	{ text = tr['config_save_into_new'], callback = save_settings_create_config, menu = true },
-	{ text = tr['config_save_all'], callback = save_settings },
-	{ text = tr['config_save_default'], callback = reload_ppr_config },
-}
+local wp_callback = ppr_require("Trainer/menu/waypoints_settings")
+local loc_callback = ppr_require("Trainer/menu/pre-game/loc_menu")
 
 main_menu = function()
-	Menu_open( Menu, { title = tr['config_menu'], description = tr['config_current']..': '..ppr_config.DefaultConfig, button_list = main_menu_data } )
+	local data = {
+		{ text = tr['wp_title'], callback = wp_callback, menu = true },
+		{},
+		{ text = tr['loc_menu'], callback = loc_callback, menu = true },
+		{},
+		{ text = tr['config_create'], callback = create_config_menu, menu = true },
+		{ text = tr['config_rename'], callback = rename_config_menu, menu = true },
+		{ text = tr['config_delete'], callback = delete_config_menu, menu = true },
+		{ text = tr['config_load'], callback = load_config_menu, menu = true },
+		{},
+		{ text = tr['config_save_into_new'], callback = save_settings_create_config, menu = true },
+		{ text = tr['config_save_all'], callback = save_settings },
+		{ text = tr['config_save_default'], callback = reload_ppr_config },
+	}
+	Menu_open( Menu, { title = tr['config_menu'], description = tr['config_current']..': '..ppr_config.DefaultConfig, button_list = data } )
 end
 
 return main_menu

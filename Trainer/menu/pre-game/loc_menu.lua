@@ -89,7 +89,6 @@ local function open_up_data( net_data )
 	end
 end
 
-local dl_menu_data = { title = tr.menu_wait, description = tr.loc_menu_wait_desc, button_list = {} }
 local function dl_main()
 	NEED_SHOWUP = true
 	if ( not REQUESTED ) then --Don't repeat download request if it is put in here already!
@@ -105,15 +104,15 @@ local function dl_main()
 			end
 		end
 	end
-	local M = open_menu(Menu, dl_menu_data)
+	local M = open_menu(Menu, { title = tr.menu_wait, description = tr.loc_menu_wait_desc, button_list = {} })
 	M.close_clbks.on_loc_close = function() NEED_SHOWUP = false end --So when user will decide to close this dialog, available localizations dialog will not open
 end
 
 local lan_menu_blist = nil
-local lan_menu_data = { title = tr.loc_menu, button_list = false }
 
 local function change_loc( lang )
 	Lchange_language( L, lang, true )
+	lan_menu_blist = nil -- invalidate cache so texts rebuild on next open
 end
 
 local browse_locs
@@ -124,7 +123,7 @@ browse_locs = function()
 					lan_menu_blist = nil
 					browse_locs()
 				end })
-		
+
 		local list = rlist_files("Trainer/translations/", "txt")
 		if list then
 			log("List:")
@@ -136,22 +135,19 @@ browse_locs = function()
 			_err("in {loc_menu.lua}", "No languages found!!!")
 			tab_insert(lan_menu_blist, { text = tr.loc_menu_no_locals, callback = function()end})
 		end
-		lan_menu_data.button_list = lan_menu_blist
 	end
-	open_menu(Menu, lan_menu_data)
+	open_menu(Menu, { title = tr.loc_menu, button_list = lan_menu_blist })
 end
 
-local main_menu_data = { title = tr.loc_menu, description = '', button_list = {
-		{ text = tr.loc_menu_choose_local, callback = browse_locs, menu = true },
-		{ text = tr.loc_menu_choose_remote, callback = dl_main, menu = true },
-	}
-}
 local function main()
 	--TO DO:
 	--Menu got split:
 	--	Menu, where user can go through available translations
 	--	Menu, where user can download translation
 	--ETA: Mostly done, testing for bugs
-	open_menu(Menu, main_menu_data)
+	open_menu(Menu, { title = tr.loc_menu, description = '', button_list = {
+		{ text = tr.loc_menu_choose_local, callback = browse_locs, menu = true },
+		{ text = tr.loc_menu_choose_remote, callback = dl_main, menu = true },
+	}})
 end
 return main

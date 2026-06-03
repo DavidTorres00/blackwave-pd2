@@ -4,5 +4,5 @@ return function( cfg )
 	cfg.const_edition="Blackwave"
 	cfg.const_blt_version="1.4.9"
 	cfg.MenuTheme="teal"
-	cfg.DefaultConfig="SIGILO"
+	cfg.Language="Spanish"
 end

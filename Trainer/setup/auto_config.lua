@@ -59,12 +59,14 @@ do
 	end
 end
 
-m_log_error("BW_PROBE", "auto_config: config loaded, applying plugins")
+m_log_error("BW_PROBE", "auto_config: config loaded, deferring plugins until is_playing")
 
 local path = "Trainer/addons/"
 local load_plugin = load_plugin( path )
-
 local GetPlayerUnit = GetPlayerUnit
+
+local function apply_plugins()
+m_log_error("BW_PROBE", "auto_config: apply_plugins START")
 
 -- Character menu
 if cfg.god_mode then
@@ -371,6 +373,20 @@ end
 -- Tools menu
 if cfg.ReduceDetectionLevel then
 	load_plugin( 'tools/ReduceDetectionLevel' )
+end
+
+m_log_error("BW_PROBE", "auto_config: apply_plugins END")
+end -- apply_plugins
+
+local function game_classes_ready()
+	local u = GetPlayerUnit()
+	return u and alive(u)
+end
+
+if game_classes_ready() then
+	apply_plugins()
+else
+	query_execution_testfunc(game_classes_ready, { f = apply_plugins })
 end
 
 m_log_error("BW_PROBE", "auto_config: end")
