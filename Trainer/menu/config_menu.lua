@@ -10,7 +10,11 @@ local ppr_require = ppr_require
 ppr_require 'Trainer/tools/new_menu/menu'
 
 local Menu = Menu
-local Menu_open = Menu.open
+local _Menu_open_raw = Menu.open
+local Menu_open = function(_, data, n)
+	if data and not data.color then data.color = Color.MENU_THEME end
+	return _Menu_open_raw(Menu, data, n)
+end
 local tr = Localization.translate
 local io_open = ppr_io.open
 local str_split = string.split
@@ -24,6 +28,9 @@ local plugins = plugins
 local ppr_config = ppr_config
 local os_remove = os.remove
 local os_rename = os.rename
+-- ppr_io.open resolves relative to mods/Blackwave/ automatically.
+-- os.remove uses the game working dir, so needs the full prefix.
+local function cfg_abs(name) return "mods/Blackwave/Trainer/configs/"..name..".lua" end
 
 local main_menu, create_config_menu, load_config_menu, are_you_sure, delete_config_menu, rename_config_menu, rename_config_input, reload_ppr_config, save_settings_create_config, _save_settings_create_config
 
@@ -51,7 +58,7 @@ local load_config = function( name )
 end
 
 local delete_config = function( name )
-	os_remove("Trainer/configs/"..name..".lua")
+	os_remove(cfg_abs(name))
 	
 	if ppr_config.DefaultConfig == name then
 		ppr_config.DefaultConfig = "default_config"
@@ -62,13 +69,24 @@ end
 local rename_config = function( name, new_name )
 	local old_loc = "Trainer/configs/"..name..".lua"
 	local new_loc = "Trainer/configs/"..new_name..".lua"
-	os_rename(old_loc, new_loc)
-	
+
+	local f_read = io_open(old_loc, "r")
+	if not f_read then main_menu() return end
+	local content = f_read:read("*all")
+	f_read:close()
+
+	local f_write = io_open(new_loc, "w")
+	if not f_write then main_menu() return end
+	f_write:write(content)
+	f_write:close()
+
+	os_remove(cfg_abs(name))
+
 	if ppr_config.DefaultConfig == name then
 		ppr_config.DefaultConfig = new_name
 		game_config.auto_config = new_loc
 	end
-	
+
 	main_menu()
 end
 
@@ -76,8 +94,22 @@ local save_settings = function()
 	game_config() -- reload config
 end
 
+-- Non-recursive: only top-level Trainer/configs/*.lua
+-- Avoids picking up subdirectory files (skills_config, waypoints_config)
+local SYSTEM_CONFIGS = { default_config = true, blank = true, menu_config = true }
 local get_configs_list = function()
-	return rlist_files( "Trainer/configs", "lua" )
+	local files = file.GetFiles("mods/Blackwave/Trainer/configs")
+	if not files then return nil end
+	local result = {}
+	for _, name in ipairs(files) do
+		if name:sub(-4) == ".lua" then
+			local stem = name:sub(1, -5)
+			if not SYSTEM_CONFIGS[stem] then
+				result[#result + 1] = stem
+			end
+		end
+	end
+	return #result > 0 and result or nil
 	--local list = io_popen("@echo OFF & cd Trainer/configs & for /r %f in (*.lua) do echo %~nf"):read("*all")
 	--if ( list ~= "" ) then
 	--	list = str_split(list, '\n')
@@ -90,7 +122,7 @@ end
 are_you_sure = function(p, name, clbk)
 	local data = {
 		{ text = tr.except_yes, callback = function()
-				os_remove(p)
+				os_remove(cfg_abs(name))
 				if (clbk) then
 					clbk( name )
 				else
@@ -138,9 +170,7 @@ rename_config_menu = function()
 	local configs_list = get_configs_list()
 	if ( configs_list ) then
 		for _, name in pairs( configs_list ) do
-			if name ~= "default_config" and name ~= "blank"  then
-				insert( data, { text = tr['rename'] .. " - '".. name .."'", callback = rename_config_input, data = name, menu = true } )
-			end
+			insert( data, { text = tr['rename'] .. " - '".. name .."'", callback = rename_config_input, data = name, menu = true } )
 		end
 	end
 	
@@ -156,9 +186,7 @@ delete_config_menu = function()
 	
 	local configs_list = get_configs_list()
 	for _, name in pairs( configs_list ) do
-		if name ~= "default_config" and name ~= "blank" then
-			insert( data, { text = tr['delete'] .. " - '".. name .."'", callback = delete_config, data = name } )
-		end
+		insert( data, { text = tr['delete'] .. " - '".. name .."'", callback = delete_config, data = name } )
 	end
 	
 	if #data == 0 then

@@ -17,3 +17,7 @@ errlog.log
 
 # Auto-generated config patches
 *.auto
+
+# Personal config presets (user-created via F2 menu)
+Trainer/configs/ASALTO.lua
+Trainer/configs/sigilo.lua
