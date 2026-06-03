@@ -215,7 +215,7 @@ load_unit_menu = function( category, unit_type )
 		insert(data, { text = tr['no_units_on_map'], callback = void })
 	end
 	
-	Menu_open( Menu, { title = tr[ category_data.translation ], button_list = data, description = tr.equip_desc .. " '" .. bound_key .."'", back = main_menu } )
+	Menu_open( Menu, { title = tr[ category_data.translation ], color = Color.MENU_SPAWN, button_list = data, description = tr.equip_desc .. " '" .. bound_key .."'", back = main_menu } )
 end
 
 load_anim_menu = function( category )
@@ -226,7 +226,7 @@ load_anim_menu = function( category )
 		insert( data, { text = parse_anim_name(anim_name), callback = set_spawn_anim, data = { anim_name, category_data.anim_type }, switch_back = main_menu } )
 	end
 	
-	Menu_open( Menu, { title = tr[ category_data.translation ], button_list = data, back = main_menu } )
+	Menu_open( Menu, { title = tr[ category_data.translation ], color = Color.MENU_SPAWN, button_list = data, back = main_menu } )
 end
 
 -- Menu
@@ -237,7 +237,7 @@ spawn_settings = function()
 		{ text = tr['spawn_amount_menu'], callback = spawn_amount_menu, menu = true },
 	}
 	
-	Menu_open( Menu, { title = tr['spawn_settings'], button_list = data, back = main_menu } )
+	Menu_open( Menu, { title = tr['spawn_settings'], color = Color.MENU_SPAWN, button_list = data, back = main_menu } )
 end
 
 spawn_load_packages = function()
@@ -252,7 +252,7 @@ spawn_load_packages = function()
 		end
 	end
 	
-	Menu_open( Menu, { title = tr['spawn_load_packages'], button_list = data, back = main_menu } )
+	Menu_open( Menu, { title = tr['spawn_load_packages'], color = Color.MENU_SPAWN, button_list = data, back = main_menu } )
 end
 
 spawn_position_menu = function()
@@ -300,7 +300,7 @@ spawn_special_menu = function()
 		insert(data, { text = tr['spawn_vehicle_turret_en'], callback = spawn_vehicle_turret, data = "combatant" })
 	end
 	
-	Menu_open( Menu, { title = tr['spawn_special_menu'], button_list = data, back = main_menu } )
+	Menu_open( Menu, { title = tr['spawn_special_menu'], color = Color.MENU_SPAWN, button_list = data, back = main_menu } )
 end
 
 -- Main menu
@@ -328,7 +328,7 @@ main_menu = function()
 		{ text = tr['spawn_bg_gangs_menu'],  callback = load_unit_menu, data = { "gangs", 'friendly' }, menu = true },
 	}
 	
-	Menu_open( Menu, { title = tr['spawn_menu'], button_list = data } )
+	Menu_open( Menu, { title = tr['spawn_menu'], color = Color.MENU_SPAWN, button_list = data } )
 end
 
 return main_menu

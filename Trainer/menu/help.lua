@@ -9,8 +9,9 @@ local open_menu
 do
 	local Menu = Menu
 	local open = Menu.open
-	open_menu = function( ... )
-		return open(Menu, ...)
+	open_menu = function( data, n )
+		if data and not data.color then data.color = Color.MENU_THEME end
+		return open(Menu, data, n)
 	end
 end
 local Steam = Steam

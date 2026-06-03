@@ -411,4 +411,10 @@ Yapilandirilmis tuslarinizi gormek ve duzenlemek icin keyconfig.lua'yi kontrol e
 	-- Configuration menu
     config_menu = "Konfigurasyon Menusu",
     config_save_all = "Butun Ayarlarini Kayitla",
+
+-- Tema secici (F4)
+    theme_menu_title   = "Menu Temasi",
+    theme_pregame      = "Oyun Oncesi Tema",
+    theme_ingame       = "Oyun Ici Tema",
+    theme_per_category = "Kategoriye Gore  (varsayilan)",
 }

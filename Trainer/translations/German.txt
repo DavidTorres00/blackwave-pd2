@@ -1,4 +1,4 @@
---[[
+﻿--[[
 Translation file for Blackwave.
 Language: German
 Version: v1.0.0
@@ -859,4 +859,10 @@ trigger_recorder						= "Trigger Recorder umschalten",
 	spoof_standard_names				=	"Standard Namen",
 	spoof_donors_names					=	"Spender Namen",
 	spoof_pirates_names					=	"Piraten Namen",
+
+-- Theme-Auswahl (F4)
+	theme_menu_title   = "Menü-Thema",
+	theme_pregame      = "Vorspiel-Thema",
+	theme_ingame       = "Im-Spiel-Thema",
+	theme_per_category = "Nach Kategorie  (Standard)",
 }

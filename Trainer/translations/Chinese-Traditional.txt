@@ -446,4 +446,10 @@ Middle Mouse Button - 傳送
 		--Other
 		dropin_join_progress = " 正在加入 ",
 		dropin_joined = " 成功加入遊戲。",
+
+-- 主題選擇器 (F4)
+		theme_menu_title   = "選單主題",
+		theme_pregame      = "預遊戲主題",
+		theme_ingame       = "遊戲內主題",
+		theme_per_category = "按類別  (預設)",
 }

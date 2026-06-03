@@ -1010,4 +1010,10 @@ Usefull when you want to reload some modified plugin on fly or turn on cheats ag
 	spoof_donors_names							=	"Donor Names",
 	spoof_patrons_names							=	"Patron Names",
 	spoof_developer_names						=	"Developer Names",
+
+-- Theme selector (F4)
+	theme_menu_title								=	"Menu Theme",
+	theme_pregame									=	"Pregame Theme",
+	theme_ingame									=	"Ingame Theme",
+	theme_per_category							=	"Per Category  (default)",
 }

@@ -76,7 +76,7 @@ additional_option = function()
 		{ text = tr.togg_no_bag_cooldown, plugin = 'no_bag_cooldown', switch_back = true },
 	}
 	
-	Menu_open(Menu, { title = tr.additional_option, button_list = data, plugin_path = path, back = main_menu } )
+	Menu_open(Menu, { title = tr.additional_option, color = Color.MENU_CHAR, button_list = data, plugin_path = path, back = main_menu } )
 end
 
 main_menu = function()
@@ -113,7 +113,7 @@ main_menu = function()
 		insert(data, { text = tr.going_to_jail, callback = _going_to_jail}) --Just add "_" before function to go to the jail with effect
 	end
 	
-	Menu_open(Menu, { title = tr.char_menu, button_list = data, plugin_path = path } )
+	Menu_open(Menu, { title = tr.char_menu, color = Color.MENU_CHAR, button_list = data, plugin_path = path } )
 end
 
 --TO DO: Reoptimise it wisely

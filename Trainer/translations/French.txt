@@ -1,4 +1,4 @@
---[[
+﻿--[[
 Translation file for Blackwave.
 Language: french
 Version: v1.0.0
@@ -698,4 +698,10 @@ qui croient en nous et nos en efforts pour cr�er des Trainers digne du nom de.
 	dropin_joined = "Partie rejointe avec succ�s.",
 	loot_spoof_name = "Carte cadeau",
 	loot_spoof_actual = "V�ritable gain:  ",
+
+-- Sélecteur de thème (F4)
+	theme_menu_title   = "Thème du Menu",
+	theme_pregame      = "Thème Pré-partie",
+	theme_ingame       = "Thème En-partie",
+	theme_per_category = "Par Catégorie  (défaut)",
 }

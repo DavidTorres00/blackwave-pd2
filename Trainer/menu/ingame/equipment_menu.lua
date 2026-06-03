@@ -33,7 +33,7 @@ sentry_ammo_box = function()
 		{ text = tr.equip_sentry_rocket, callback = change_sentry_ammo, data = 3 },
 	}
 	
-	Menu_open( Menu, { title = tr.equip_sentry_ammo, button_list = data, plugin_path = path, back = main_menu } )
+	Menu_open( Menu, { title = tr.equip_sentry_ammo, color = Color.MENU_EQUIP, button_list = data, plugin_path = path, back = main_menu } )
 end
 
 main_menu = function()
@@ -50,7 +50,7 @@ main_menu = function()
 		{ text = tr.equip_sentry_ammo, callback = sentry_ammo_box, host_only = true, box = true },
 	}
 	
-	Menu_open( Menu, { title = tr.equip_menu_title, button_list = data, plugin_path = path } )
+	Menu_open( Menu, { title = tr.equip_menu_title, color = Color.MENU_EQUIP, button_list = data, plugin_path = path } )
 end
 
 return main_menu

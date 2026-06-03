@@ -403,7 +403,7 @@ patch_menu = function()
 		{ text = tr.patch_int_team, plugin = 'interact_team', switch_back = true },
 	}
 	
-	Menu_open( Menu,  { title = tr.intm_patches, button_list = contents, plugin_path = path, back = open_menu } )
+	Menu_open( Menu,  { title = tr.intm_patches, color = Color.MENU_TROLL, button_list = contents, plugin_path = path, back = open_menu } )
 end
 
 local special_interactions = { 
@@ -454,7 +454,7 @@ open_menu = function()
 		end
 	end
 
-	Menu_open( Menu,  { title = tr.intm_title, button_list = contents } )
+	Menu_open( Menu,  { title = tr.intm_title, color = Color.MENU_TROLL, button_list = contents } )
 end
 
 return open_menu

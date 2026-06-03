@@ -297,7 +297,32 @@ Color.Patron = Color("9000C4")
 Color.Developer = Color("6BF64F")
 
 Color.Unlocker = Color("C8C8C8")
+
+-- Menu category colors
+Color.MENU_CHAR      = Color("4FC3F7")  -- light blue   (character/player)
+Color.MENU_WEAPON    = Color("EF5350")  -- red          (weapons/combat)
+Color.MENU_STEALTH   = Color("66BB6A")  -- green        (stealth)
+Color.MENU_EQUIP     = Color("FFA726")  -- orange       (equipment/sentry)
+Color.MENU_INVENTORY = Color("FFD54F")  -- amber        (inventory/bags)
+Color.MENU_TROLL     = Color("CE93D8")  -- purple       (troll/interactions)
+Color.MENU_MISSION   = Color("FF7043")  -- deep orange  (mission/AI)
+Color.MENU_TOOLS     = Color("4DD0E1")  -- cyan         (tools/sequence)
+Color.MENU_SPAWN     = Color("90A4AE")  -- blue grey    (spawn units)
+Color.MENU_LEGO      = Color("FFF176")  -- yellow       (lego/props)
+Color.MENU_MODS      = Color("78909C")  -- steel blue   (mod menu)
+Color.MENU_CONFIG    = Color("B0BEC5")  -- light grey   (config/settings)
 Color.XRay = Color("0F0F0F")
+
+-- Dynamic pregame menu theme — persisted in ppr_config.MenuTheme
+local _bw_theme_map = {
+	cyan   = Color.cyan,      gold   = Color.gold,
+	green  = Color.neongreen, purple = Color.Patron,
+	red    = Color.red,       pink   = Color.pink,
+	white  = Color.white,     orange = Color.MENU_EQUIP,
+	lilac  = Color.lila,      teal   = Color.bluegreen,
+}
+Color.MENU_THEME   = _bw_theme_map[ppr_config.MenuTheme]   or Color.cyan
+Color.INGAME_THEME = _bw_theme_map[ppr_config.IngameTheme] or nil
 
 load_plugin = function( path ) --Function, that constructs new load_plugin function (I hope you will get rid of this //baldwin)
 	assert( plugins, 'Error! Plugin manger isn\'t loaded!' )

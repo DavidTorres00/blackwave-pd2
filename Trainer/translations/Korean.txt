@@ -1,4 +1,4 @@
---[[
+﻿--[[
 Translation file for Blackwave.
 Language: korean
 Version: v1.0.0
@@ -447,4 +447,10 @@ Middle Mouse Button - �����̵�
     --Other
     dropin_join_progress = " join progress is ",
     dropin_joined = " successfully joined game.",
+
+-- 테마 선택기 (F4)
+    theme_menu_title   = "메뉴 테마",
+    theme_pregame      = "프리게임 테마",
+    theme_ingame       = "인게임 테마",
+    theme_per_category = "카테고리별  (기본값)",
 }

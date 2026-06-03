@@ -43,7 +43,11 @@ local tr_trees = {
 local togg_vars = togg_vars
 
 local Menu = Menu
-local Menu_open = Menu.open
+local _raw_open = Menu.open
+local Menu_open = function(_, data, n)
+	if data and not data.color then data.color = Color.MENU_THEME end
+	return _raw_open(Menu, data, n)
+end
 
 local main_menu, crimespree_menu, safehouse_menu, inventory_menu, infamy_menu, skill_menu, money_menu, level_menu, remove_items_menu, secret_skills_menu
 

@@ -49,7 +49,7 @@ main_menu = function()
 		{ text = tr.spoof_detection_lvl, plugin = 'spoof_detection_lvl' },
 	}
 	
-	Menu_open( Menu, { title = tr['tools_menu'], button_list = contents, plugin_path = path } )
+	Menu_open( Menu, { title = tr['tools_menu'], color = Color.MENU_TOOLS, button_list = contents, plugin_path = path } )
 end
 
 return main_menu

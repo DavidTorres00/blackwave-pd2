@@ -32,7 +32,7 @@ main_menu = function()
 		{ text = tr['mod_TerminatorHUD'], plugin = "TerminatorHUD" },		
 	}
 	
-	Menu_open( Menu, { title = tr['mod_menu'], button_list = data, plugin_path = path } )
+	Menu_open( Menu, { title = tr['mod_menu'], color = Color.MENU_MODS, button_list = data, plugin_path = path } )
 end
 
 return main_menu

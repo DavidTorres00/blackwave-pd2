@@ -1,4 +1,4 @@
---[[
+﻿--[[
 Translation file for Blackwave.
 Language: schinese
 Version: v1.0.0
@@ -446,4 +446,10 @@ Middle Mouse Button - 传送
 		--Other
 		dropin_join_progress = " 正在加入 ",
 		dropin_joined = " 成功加入游戏。",
+
+-- 主题选择器 (F4)
+		theme_menu_title   = "菜单主题",
+		theme_pregame      = "预游戏主题",
+		theme_ingame       = "游戏内主题",
+		theme_per_category = "按类别  (默认)",
 }

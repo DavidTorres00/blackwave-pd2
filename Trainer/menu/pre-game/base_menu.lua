@@ -21,7 +21,11 @@ local rlist_files = rlist_files
 local tr = Localization.translate
 
 local Menu = Menu
-local Menu_open = Menu.open
+local _raw_open = Menu.open
+local Menu_open = function(_, data, n)
+	if data and not data.color then data.color = Color.MENU_THEME end
+	return _raw_open(Menu, data, n)
+end
 
 local togg_vars = togg_vars
 local ppr_config = ppr_config

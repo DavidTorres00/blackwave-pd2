@@ -231,7 +231,7 @@ weapons_from_inventory = function( category )
 				callback = function() swap_weapon(slot_data.factory_id, weapon_data, slot_data.blueprint) end } )
 	end
 	
-	Menu_open( Menu, { title = tr.weapons_from_inventory, button_list = data, back = function() weapons_menu( category ) end } )
+	Menu_open( Menu, { title = tr.weapons_from_inventory, color = Color.MENU_WEAPON, button_list = data, back = function() weapons_menu( category ) end } )
 end
 
 weapons_menu = function( category )
@@ -254,7 +254,7 @@ weapons_menu = function( category )
 		end
 	end
 	
-	Menu_open( Menu, { title = tr[ translation ], button_list = data, back = main_menu } )
+	Menu_open( Menu, { title = tr[ translation ], color = Color.MENU_WEAPON, button_list = data, back = main_menu } )
 end
 
 melee_weapons_menu = function()
@@ -269,7 +269,7 @@ melee_weapons_menu = function()
 		end
 	end
 	
-	Menu_open( Menu, { title = tr.melee_weapons, button_list = data, back = main_menu } )
+	Menu_open( Menu, { title = tr.melee_weapons, color = Color.MENU_WEAPON, button_list = data, back = main_menu } )
 end
 
 armors_menu = function()
@@ -284,7 +284,7 @@ armors_menu = function()
 		end
 	end
 	
-	Menu_open( Menu, { title = tr.melee_weapons, button_list = data, back = main_menu } )
+	Menu_open( Menu, { title = tr.melee_weapons, color = Color.MENU_WEAPON, button_list = data, back = main_menu } )
 end
 
 main_menu = function()
@@ -298,7 +298,7 @@ main_menu = function()
 			{ text = tr.always_dismember, plugin = "always_dismember", switch_back = true },
 			{},
 		}
-		Menu_open( Menu, { title = tr.weapon_menu_title, button_list = data, plugin_path = path } )
+		Menu_open( Menu, { title = tr.weapon_menu_title, color = Color.MENU_WEAPON, button_list = data, plugin_path = path } )
 	end
 end
 

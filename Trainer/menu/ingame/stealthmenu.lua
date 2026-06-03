@@ -51,7 +51,7 @@ additional_stealth_menu = function()
 		{ text = tr['cops_dont_shoot'], plugin = "cops_dont_shoot", host_only = true, switch_back = true },
 	}
 	
-	Menu_open( Menu, { title = tr['npc_menu'], button_list = data, plugin_path = path, back = main_menu } )
+	Menu_open( Menu, { title = tr['npc_menu'], color = Color.MENU_STEALTH, button_list = data, plugin_path = path, back = main_menu } )
 end
 
 stealth_inf_menu = function()
@@ -66,7 +66,7 @@ stealth_inf_menu = function()
 		{ text = tr['inf_follow_hostages'], plugin = "inf_follow_hostages", switch_back = true },
 	}
 	
-	Menu_open( Menu, { title = tr['stealth_inf_menu'], button_list = data, plugin_path = path, back = main_menu } )
+	Menu_open( Menu, { title = tr['stealth_inf_menu'], color = Color.MENU_STEALTH, button_list = data, plugin_path = path, back = main_menu } )
 end
 
 main_menu = function()
@@ -87,7 +87,7 @@ main_menu = function()
 		{text = tr['kill_all_npc'], callback = ppr_dofile, data = path .. "kill_all_npc" },
 	}
 	
-	Menu_open( Menu, { title = tr['stealth_menu'], button_list = data, plugin_path = path } )
+	Menu_open( Menu, { title = tr['stealth_menu'], color = Color.MENU_STEALTH, button_list = data, plugin_path = path } )
 end
 
 return main_menu

@@ -1060,4 +1060,10 @@ Util cuando quieres recargar un plugin modificado en tiempo real o activar los t
 	base_Shotgun_Physics = "Fisica de escopetas",
 	base_Weapon_Parts_Tweaks = "Ajustes de accesorios de armas",
 	base_Weapon_Tweaks = "Ajustes de estadisticas de armas",
+
+-- Selector de tema (F4)
+	theme_menu_title = "Tema del Menu",
+	theme_pregame    = "Tema Pre-partida",
+	theme_ingame     = "Tema En-partida",
+	theme_per_category = "Por Categoria  (predeterminado)",
 }

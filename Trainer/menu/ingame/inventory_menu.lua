@@ -170,7 +170,7 @@ add_items_menu = function()
 		end
 	end
 	
-	Menu_open( Menu,  { title = tr.add_items_menu, button_list = data, back = main_menu } )
+	Menu_open( Menu,  { title = tr.add_items_menu, color = Color.MENU_INVENTORY, button_list = data, back = main_menu } )
 end
 
 add_some_cash = function()
@@ -185,7 +185,7 @@ money_menu = function()
 		{ text = tr.secure_turrets_lg, host_only = true, callback = secure_rupies },
 	}
 	
-	Menu_open( Menu,  { title = tr.inventory_money_title, button_list = data, back = main_menu } )
+	Menu_open( Menu,  { title = tr.inventory_money_title, color = Color.MENU_INVENTORY, button_list = data, back = main_menu } )
 end
 
 equipment_changer_menu = function()
@@ -200,7 +200,7 @@ equipment_changer_menu = function()
 		end
 	end
 	
-	Menu_open( Menu,  { title = tr.equipment_changer, button_list = data, back = main_menu } )
+	Menu_open( Menu,  { title = tr.equipment_changer, color = Color.MENU_INVENTORY, button_list = data, back = main_menu } )
 end
 
 modifiers_menu = function()
@@ -238,7 +238,7 @@ spawn_bag_menu = function()
 			switch_back = true } )
 	insert( data, 2, {} )
 	
-	Menu_open( Menu,  { title = tr.inventory_menu_desc, button_list = data, description = tr.equip_desc .. " '" .. bound_key .."'", back = main_menu } )
+	Menu_open( Menu,  { title = tr.inventory_menu_desc, color = Color.MENU_INVENTORY, button_list = data, description = tr.equip_desc .. " '" .. bound_key .."'", back = main_menu } )
 end
 
 main_menu = function()
@@ -252,7 +252,7 @@ main_menu = function()
 	{ text = tr.add_items_menu, callback = add_items_menu, menu = true },
 	}
 	
-	Menu_open( Menu,  { title = tr.inventory_menu, button_list = data } )
+	Menu_open( Menu,  { title = tr.inventory_menu, color = Color.MENU_INVENTORY, button_list = data } )
 end
 
 return main_menu

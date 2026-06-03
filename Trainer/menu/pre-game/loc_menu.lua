@@ -5,7 +5,11 @@ local ppr_require = ppr_require
 ppr_require("Trainer/tools/new_menu/menu")
 
 local Menu = Menu
-local open_menu = Menu.open
+local _raw_open = Menu.open
+local open_menu = function(_, data, n)
+	if data and not data.color then data.color = Color.MENU_THEME end
+	return _raw_open(Menu, data, n)
+end
 local L = Localization
 local Lchange_language = L.change_language
 local tr = L.translate

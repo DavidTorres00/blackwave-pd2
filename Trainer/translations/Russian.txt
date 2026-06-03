@@ -1,4 +1,4 @@
---[[
+﻿--[[
 Translation file for Blackwave.
 Language: russian
 Author: Ahr1man and NewComer and Ghost_Inq
@@ -412,4 +412,10 @@ Version: v1.0.0
         -- Configuration menu
         config_menu = "Настройки",
         config_save_all = "Сохранить все текущие настройки",
+
+-- Выбор темы (F4)
+        theme_menu_title   = "Тема меню",
+        theme_pregame      = "Тема пре-игры",
+        theme_ingame       = "Тема в игре",
+        theme_per_category = "По категориям  (по умолчанию)",
 }

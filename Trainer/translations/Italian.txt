@@ -1,4 +1,4 @@
---[[
+﻿--[[
 Translation file for Blackwave.
 Language: italian
 Version: v1.0.0
@@ -407,4 +407,10 @@ Controlla keyconfig.lua per vedere e modificare i tuoi tasti configurati.]],
 	-- Configuration menu
 	config_menu = "Menu configurazione",
 	config_save_all = "Salva tutte le impostazioni correnti",
+
+-- Selettore tema (F4)
+	theme_menu_title   = "Tema Menu",
+	theme_pregame      = "Tema Pre-partita",
+	theme_ingame       = "Tema In-gioco",
+	theme_per_category = "Per Categoria  (predefinito)",
 }

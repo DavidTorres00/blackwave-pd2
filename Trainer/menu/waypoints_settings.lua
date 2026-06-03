@@ -80,7 +80,7 @@ main_menu = function()
 		end
 	end
 	
-	Menu_open(Menu, { title = tr.wp_title, button_list = data } )
+	Menu_open(Menu, { title = tr.wp_title, color = Color.MENU_CONFIG, button_list = data } )
 end
 
 return main_menu

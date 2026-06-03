@@ -96,7 +96,7 @@ interaction_with_self = function()
 			table.insert(data, { text = state, callback = change_own_state, data = state })
 		end
 	end
-	Menu:open( { title = Localization.translate['troll_change_own_state'], button_list = data, back = main_menu } )
+	Menu:open( { title = Localization.translate['troll_change_own_state'], color = Color.MENU_TROLL, button_list = data, back = main_menu } )
 end
 
 interaction_with_id_menu = function(id, name)
@@ -104,7 +104,7 @@ interaction_with_id_menu = function(id, name)
 		{ text = Localization.translate['troll_release_player'], callback = release_player, data = id },
 	}
 	
-	Menu:open( { title = Localization:text('troll_interact_with', name, id), button_list = data, back = interaction_with_other } )
+	Menu:open( { title = Localization:text('troll_interact_with', name, id), color = Color.MENU_TROLL, button_list = data, back = interaction_with_other } )
 end
 
 interaction_with_other = function()
@@ -127,7 +127,7 @@ interaction_with_other = function()
 		table.insert(data, { text = Localization.translate['troll_no_players'], callback = void })
 	end
 	
-	Menu:open( { title = Localization.translate['troll_interaction_with_other'], button_list = data, back = main_menu } )
+	Menu:open( { title = Localization.translate['troll_interaction_with_other'], color = Color.MENU_TROLL, button_list = data, back = main_menu } )
 end
 
 main_menu = function()
@@ -138,7 +138,7 @@ main_menu = function()
 		{ text = Localization.translate['troll_set_cops_on_fire'], callback = set_cops_on_fire },
 	}
 	
-	Menu:open( { title = Localization.translate['troll_menu'], button_list = data } )
+	Menu:open( { title = Localization.translate['troll_menu'], color = Color.MENU_TROLL, button_list = data } )
 end
 
 return main_menu

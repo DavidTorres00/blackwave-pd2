@@ -205,7 +205,7 @@ customize_safehouse = function()
 		{},
 	}
 
-	Menu_open(Menu, {title = tr.base_custom_safehouse_Sub, description = tr.base_custom_safehouse_Sub_desc, button_list = data})
+	Menu_open(Menu, {title = tr.base_custom_safehouse_Sub, color = Color.MENU_MISSION, description = tr.base_custom_safehouse_Sub_desc, button_list = data})
 end
 main = function()
 	local data = {
@@ -248,7 +248,7 @@ main = function()
 	if current_level == "chill" and is_server then
 		data[#data+1] = { text = tr.base_custom_safehouse_Sub, callback = customize_safehouse, menu = true, host_only = true }
 	end
-	Menu_open( Menu, { title = tr.mission_menu_title, button_list = data, plugin_path = path } )
+	Menu_open( Menu, { title = tr.mission_menu_title, color = Color.MENU_MISSION, button_list = data, plugin_path = path } )
 end
 
 return main

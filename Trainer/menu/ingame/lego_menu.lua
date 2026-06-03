@@ -166,7 +166,7 @@ local fav_unit_menu = function( unit_name )
 		{ text = tr['delete'], callback = delete_favorite, data = unit_name },
 	}
 	
-	Menu_open( Menu, { title = tr['spawn_props_menu'], button_list = data, back = favorite_menu } )
+	Menu_open( Menu, { title = tr['spawn_props_menu'], color = Color.MENU_LEGO, button_list = data, back = favorite_menu } )
 end
 
 local favorite_menu = function()
@@ -180,7 +180,7 @@ local favorite_menu = function()
 		end
 	end
 	
-	Menu_open( Menu, { title = tr['favorite_menu'], button_list = data, back = main_menu } )
+	Menu_open( Menu, { title = tr['favorite_menu'], color = Color.MENU_LEGO, button_list = data, back = main_menu } )
 end
 
 lego_create_menu = function()
@@ -188,7 +188,7 @@ lego_create_menu = function()
 		{ text = tr['config_type'] ..":", type = "input", callback_input = create_file, switch_back = true },
 	}
 	
-	Menu_open( Menu, { title = tr['lego_create'], button_list = data, back = main_menu } )
+	Menu_open( Menu, { title = tr['lego_create'], color = Color.MENU_LEGO, button_list = data, back = main_menu } )
 end
 
 local unit_menu = function( unit_name, i )
@@ -197,7 +197,7 @@ local unit_menu = function( unit_name, i )
 		{ text = tr['add_favorite'], callback = add_favorite, data = unit_name },
 	}
 	
-	Menu_open( Menu, { title = tr['spawn_props_menu'], button_list = data, back = spawn_props_menu } )
+	Menu_open( Menu, { title = tr['spawn_props_menu'], color = Color.MENU_LEGO, button_list = data, back = spawn_props_menu } )
 end
 
 --Preloading props into table, so you won't have to do it every time you open menu
@@ -225,7 +225,7 @@ do
 		end
 	end
 end
-local prop_menu_data = { title = tr['spawn_props_menu'], description = tr.equip_desc .. " '" .. spawn_key .."'", button_list = prop_data, back = main_menu }
+local prop_menu_data = { title = tr['spawn_props_menu'], color = Color.MENU_LEGO, description = tr.equip_desc .. " '" .. spawn_key .."'", button_list = prop_data, back = main_menu }
 local prop_data_size = #prop_data
 spawn_props_menu = function()
 	Menu_open( Menu, prop_menu_data )
@@ -270,7 +270,7 @@ lego_choose_file_menu = function()
 		insert( data, { text = name, callback = function() ppr_config.LegoFile = name end } )
 	end
 	
-	Menu_open( Menu, { title = tr['lego_choose_file'], button_list = data, back = main_menu } )
+	Menu_open( Menu, { title = tr['lego_choose_file'], color = Color.MENU_LEGO, button_list = data, back = main_menu } )
 end
 local main_menu_data = { 
 	{ text = tr['lego_choose_file'], callback = lego_choose_file_menu, menu = true  }, 
@@ -286,6 +286,7 @@ main_menu = function()
 	if ( not in_chat() ) then
 		Menu_open( Menu,
 			{ title = tr['lego_menu'],
+				color = Color.MENU_LEGO,
 				description = "Your current file - '".. ppr_config.LegoFile ..
 				"'\nDelete props button - '" .. delete_key ..
 				"'\nSpawn prop key - '" .. spawn_key ..

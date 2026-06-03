@@ -70,6 +70,10 @@ function Menu:init( data )
 	end
 		
 	self._data = data
+	self._color = data.color or Color.VIP
+	if Color.INGAME_THEME and GameSetup then
+		self._color = Color.INGAME_THEME
+	end
 	local ws = OverlayGui:create_screen_workspace()
 	self._ws = ws
 	managers.gui_data:layout_1280_workspace( ws )
@@ -176,7 +180,7 @@ function Menu:add_title()
 	local title = self._data.title
 	
 	local title_text = main:text( { name = "title", text = title or "", layer = 2, wrap = false, word_wrap = false, visible = true,
-								   font = T_menu.pd2_large_font, font_size = 20,color = Color.VIP,
+								   font = T_menu.pd2_large_font, font_size = 20,color = self._color,
 								   align="center", halign="center", vertical="top", valign="top", x = 0, y = 10 } )
 	self.title_text = title_text
 										
@@ -189,7 +193,7 @@ function Menu:add_description()
 	local description = self._data.description
 	
 	local desc_panel = main:text( { name = "description", text = description or "", layer = 2, wrap = true, word_wrap = true, visible = true,
-							   font = T_menu.pd2_medium_font, font_size = description_font_size, color = Color.VIP,
+							   font = T_menu.pd2_medium_font, font_size = description_font_size, color = self._color,
 							   align="center", halign="center", vertical="top", valign="top", x = 0, y = 40 } )
 	self.desc_panel = desc_panel
 	
@@ -204,9 +208,9 @@ function Menu:add_lines() -- add top and bottom lines
 	local th = self.title_text:h()
 	local dh = self.desc_panel:h()
 	
-	local mid_line = main:bitmap( { name = "mid_line", texture = "guis/textures/headershadow", layer = 1, color = Color.VIP:with_alpha(1.0), w = w } )
+	local mid_line = main:bitmap( { name = "mid_line", texture = "guis/textures/headershadow", layer = 1, color = self._color:with_alpha(1.0), w = w } )
 	mid_line:set_bottom( th + dh + 2 )
-	self.bottom_line = main:bitmap( { name = "bottom_line", texture = "guis/textures/headershadow", rotation = 180, layer = 1, color = Color.VIP:with_alpha(1.0), w = w } )
+	self.bottom_line = main:bitmap( { name = "bottom_line", texture = "guis/textures/headershadow", rotation = 180, layer = 1, color = self._color:with_alpha(1.0), w = w } )
 end
 
 function Menu:add_info_area() -- background
@@ -229,9 +233,9 @@ function Menu:add_buttons()
 	end
 	
 	local text_config = { layer = 2, wrap = "true", word_wrap = "true", visible = true,
-						  font = T_menu.pd2_medium_font, font_size = 20, color = Color.VIP,
+						  font = T_menu.pd2_medium_font, font_size = 20, color = self._color,
 						  align="left", halign="left", vertical="top", valign="top", blend_mode = "add" }
-	
+
 	local max_w = 0
 	local max_h = 0
 	
@@ -241,7 +245,7 @@ function Menu:add_buttons()
 	for i, button in ipairs( button_list ) do
 		local have_plugin = button.plugin
 		local selected_path = button.plugin_path or plug_path
-		local selected_color = Color.VIP
+		local selected_color = self._color
 		
 		if button.host_only and is_client then
 			self:host_only_button( button )
@@ -255,6 +259,7 @@ function Menu:add_buttons()
 		
 		if have_plugin or button.type == "toggle" then
 			button.tickbox = Tickbox:new( button_panel, button, selected_path )
+			button.tickbox.tickbox:set_color( selected_color )
 		end
 		
 		if button.type == "multi_choice" then
@@ -274,11 +279,11 @@ function Menu:add_buttons()
 		end
 		
 		if button.menu then
-			button_panel:bitmap( { texture = "guis/textures/pd2/crimenet_legend_join", color = Color.VIP, y = 3, x = button_panel:w() - 20 } )
+			button_panel:bitmap( { texture = "guis/textures/pd2/crimenet_legend_join", color = self._color, y = 3, x = button_panel:w() - 20 } )
 		end
-		
+
 		if button.box then
-			button_panel:bitmap( { texture = "guis/textures/pd2/blackmarket/inv_newdrop", color = Color.VIP, y = 3, x = button_panel:w() - 20 } )
+			button_panel:bitmap( { texture = "guis/textures/pd2/blackmarket/inv_newdrop", color = self._color, y = 3, x = button_panel:w() - 20 } )
 		end
 		
 		max_w = math_max( max_w, button_panel:w() )
@@ -298,9 +303,9 @@ function Menu:add_navigation()
 	self.navigation_panel = navigation_panel
 		
 	local text_config = { layer = 2, wrap = "true", word_wrap = "true", visible = true,
-						  font = T_menu.pd2_medium_font, font_size = 20, color = Color.VIP,
+						  font = T_menu.pd2_medium_font, font_size = 20, color = self._color,
 						  align="left", halign="left", vertical="top", valign="top", blend_mode = "add" }
-	
+
 	if self._data.back then
 		local prev_page = self:_add_button( navigation_panel, tr['prev_page'], text_config )
 		prev_page:set_name("previous_page")
