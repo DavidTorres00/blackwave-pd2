@@ -60,6 +60,7 @@ local get_category_data = function( category )
 		civilians = { unit_table = all_units.all_civs, translation = "spawn_civs_menu" },
 		cops = { unit_table = all_units.all_cops, translation = "spawn_cops_menu" },
 		fbi = { unit_table = all_units.all_fbi, translation = "spawn_fbi_menu" },
+		marshals = { unit_table = all_units.all_marshals, translation = "spawn_marshals_menu" },
 		swats = { unit_table = all_units.all_swats, translation = "spawn_swats_menu" },
 		gangs = { unit_table = all_units.all_gangs, translation = "spawn_gangs_menu" },
 		anim_civs = { unit_table = CopActionAct._act_redirects.civilian_spawn, translation = "spawn_civ_anim_menu", anim_type = "civilians" },
@@ -307,9 +308,9 @@ end
 
 main_menu = function()
 	local data = { 
-		{ text = tr['spawn_settings'],       callback = spawn_settings, menu = true },
+		{ text = tr['spawn_settings'],        callback = spawn_settings, menu = true },
 		{ text = tr['spawn_load_packages'],  callback = spawn_load_packages, menu = true },
-		{}, 
+		{},
 		{ text = tr['spawn_special_menu'],   callback = spawn_special_menu, menu = true },
 		{ text = tr['spawn_civs_menu'],      callback = load_unit_menu, data = { "civilians", 'civilians' }, menu = true },
 		{},
@@ -320,12 +321,14 @@ main_menu = function()
 		{ text = tr['spawn_cops_menu'],      callback = load_unit_menu, data = { "cops", 'enemy' }, menu = true },
 		{ text = tr['spawn_fbi_menu'],       callback = load_unit_menu, data = { "fbi", 'enemy' }, menu = true },
 		{ text = tr['spawn_swats_menu'],     callback = load_unit_menu, data = { "swats", 'enemy' }, menu = true },
+		{ text = tr['spawn_marshals_menu'],  callback = load_unit_menu, data = { "marshals", 'enemy' }, menu = true },
 		{ text = tr['spawn_gangs_menu'],     callback = load_unit_menu, data = { "gangs", 'enemy' }, menu = true },
 		{},
-		{ text = tr['spawn_bg_cops_menu'],   callback = load_unit_menu, data = { "cops", 'friendly' }, menu = true },
-		{ text = tr['spawn_bg_fbi_menu'],    callback = load_unit_menu, data = { "fbi", 'friendly' }, menu = true },
-		{ text = tr['spawn_bg_swats_menu'],  callback = load_unit_menu, data = { "swats", 'friendly' }, menu = true },
-		{ text = tr['spawn_bg_gangs_menu'],  callback = load_unit_menu, data = { "gangs", 'friendly' }, menu = true },
+		{ text = tr['spawn_bg_cops_menu'],      callback = load_unit_menu, data = { "cops", 'friendly' }, menu = true },
+		{ text = tr['spawn_bg_fbi_menu'],       callback = load_unit_menu, data = { "fbi", 'friendly' }, menu = true },
+		{ text = tr['spawn_bg_swats_menu'],     callback = load_unit_menu, data = { "swats", 'friendly' }, menu = true },
+		{ text = tr['spawn_bg_marshals_menu'],  callback = load_unit_menu, data = { "marshals", 'friendly' }, menu = true },
+		{ text = tr['spawn_bg_gangs_menu'],     callback = load_unit_menu, data = { "gangs", 'friendly' }, menu = true },
 	}
 	
 	Menu_open( Menu, { title = tr['spawn_menu'], color = Color.MENU_SPAWN, button_list = data } )
